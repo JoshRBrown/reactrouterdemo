@@ -5,17 +5,47 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <RenderOther other={RenderMe}  text='there'/>
       </div>
     );
   }
 }
+
+const RenderOther = ({other: OtherComponent, ...rest}) => {
+  return (
+    <div>
+      <h1>I am Render Other!!</h1>
+      <OtherComponent {...rest} />
+    </div>
+  )
+}
+
+const RenderOther2 = ({other: OtherComponent}) => {
+  return (
+    <div>
+      <h1>I too am Render Other</h1>
+      <OtherComponent />
+    </div>
+  )
+}
+
+class RenderMeToo extends React.Component {
+  render() {
+    return (
+      <div></div>
+    )
+  }
+}
+
+const RenderMe = (props) => {
+  return (
+    <ul>
+      <li>Hey</li>
+      <li>{props.text}</li>
+    </ul>
+  )
+}
+
 
 export default App;
