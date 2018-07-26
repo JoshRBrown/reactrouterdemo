@@ -1,51 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import {Route} from 'react-router-dom'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <RenderOther other={RenderMe}  text='there'/>
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blank">Blank</a></li>
+        </ul>
+
+        <Route path='/home' component={Home} />
+        <Route path='/about' component={About} />
+        <Route path='/blank' component={Blank} />
+      
       </div>
     );
   }
 }
 
-const RenderOther = ({other: OtherComponent, ...rest}) => {
+const Home = (props) => {
   return (
     <div>
-      <h1>I am Render Other!!</h1>
-      <OtherComponent {...rest} />
+      <h1>Welcome Home</h1>
     </div>
   )
 }
 
-const RenderOther2 = ({other: OtherComponent}) => {
+const About = (props) => {
   return (
     <div>
-      <h1>I too am Render Other</h1>
-      <OtherComponent />
+      <h1>About</h1>
     </div>
   )
 }
 
-class RenderMeToo extends React.Component {
-  render() {
-    return (
-      <div></div>
-    )
-  }
-}
-
-const RenderMe = (props) => {
+const Blank = (props) => {
   return (
-    <ul>
-      <li>Hey</li>
-      <li>{props.text}</li>
-    </ul>
+    <div>
+      <h1>Blank</h1>
+    </div>
   )
 }
-
 
 export default App;
