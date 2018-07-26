@@ -8,11 +8,13 @@ class App extends Component {
     return (
       <div>
         <ul>
+          <li><Link to='/'>Landing</Link></li>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/blank">Blank</Link></li>
         </ul>
 
+        <Route path='/' exact={true} component={Landing} />
         <Route path='/home' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/blank' component={Blank} />
@@ -42,6 +44,14 @@ const Blank = (props) => {
   return (
     <div>
       <h1>Blank</h1>
+    </div>
+  )
+}
+
+const Landing = (props) => {
+  return (
+    <div>
+      <h1>Landing page</h1>
     </div>
   )
 }
